@@ -41,3 +41,9 @@ This is a Markdown file. Yay!
 ```
 
 From there, build as normal.
+
+## FAQ
+
+### Does it _have_ to be `_contents.md`?
+
+No, you can configure it to anything you awnt in the `page.ini` (or whatever model config file you're using). Just remember that we are relying on the default pattern for the default exclusion pattern for attachments to avoid uploading the Markdown source on deployment.
