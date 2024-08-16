@@ -33,7 +33,7 @@ title: An example of markdown in a file
 body:
 ```
 
-`_contents.lr`:
+`_contents.md`:
 ```
 # Title
 
