@@ -10,7 +10,8 @@ from lektor.types.base import Type
 class MarkdownFileType(Type):
 	name = "markdown-file"	# ETA: explicit type name.	(The default is derived from the class name and would be "markdownfile" in this case.)
 
-	widget = 'multiline-text'
+	#widget = 'multiline-text'
+	widget = 'hidden' # TODO(eliribble): figure out how to make the widget actually work.
 
 	def value_from_raw(self, __raw):
 		return MarkdownFileDescriptor(self.options)
