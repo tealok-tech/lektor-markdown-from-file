@@ -6,6 +6,7 @@ from lektor.markdown import Markdown
 from lektor.pluginsystem import Plugin
 from lektor.types.base import Type
 
+LOGGER = logging.getLogger(__name__)
 
 class MarkdownFileType(Type):
 	name = "markdown-file"	# ETA: explicit type name.	(The default is derived from the class name and would be "markdownfile" in this case.)
@@ -27,11 +28,13 @@ class MarkdownFileDescriptor:
 		record_source_dir = Path(record_source_filename).parent
 		filename = self.options.get("file", "_contents.md")
 		source_path = Path(record_source_dir, filename)
+		LOGGER.debug("Reading markdown source from %s", source_path)
 
 		try:
 			source = source_path.read_text()
 		except FileNotFoundError:
 			source = self.options.get("default", "")
+			LOGGER.error("Could not find %s, defaulting to empty content", source_path)
 		return DepTrackingMarkdown(source, record=obj, field_options=self.options, source_path=source_path)
 
 class DepTrackingMarkdown(Markdown):
