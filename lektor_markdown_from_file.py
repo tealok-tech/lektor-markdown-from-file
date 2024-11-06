@@ -31,7 +31,7 @@ class MarkdownFileDescriptor:
 		LOGGER.debug("Reading markdown source from %s", source_path)
 
 		try:
-			source = source_path.read_text()
+			source = source_path.read_text(encoding="utf-8")
 		except FileNotFoundError:
 			source = self.options.get("default", "")
 			LOGGER.error("Could not find %s, defaulting to empty content", source_path)
